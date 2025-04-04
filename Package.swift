@@ -19,7 +19,6 @@ let package = Package(
             name: "RealTimeCutVADLibrary",
             dependencies: [
                 .target(name: "RealTimeCutVADCXXLibrary"),
-                .target(name: "onnxruntime"),
                 .target(name: "webrtc_audio_processing")
             ],
             path: "RealTimeCutVADLibrary/src",
