@@ -30,8 +30,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "RealTimeCutVADCXXLibrary",
-            url: "https://github.com/helloooideeeeea/RealTimeCutVADCXXLibrary/releases/download/v1.0.2/RealTimeCutVADCXXLibrary.xcframework.zip",
-            checksum: "7446bffdb61657e54f0b34e527e683e7a88afb985e450c6ea5de03baccc00447"
+            url: "https://github.com/helloooideeeeea/RealTimeCutVADLibraryForXCFramework/releases/download/v1.0.3/RealTimeCutVADCXXLibrary.xcframework.zip",
+            checksum: "00c4a8cd5a22e634f34d744eb06aa88a4494e12a5f9d4573989129a1f4c7e76d"
         ),
         .binaryTarget(
             name: "webrtc_audio_processing",

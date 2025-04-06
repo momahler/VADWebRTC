@@ -7,6 +7,7 @@
 
 - (void)voiceStartCallback;
 - (void)voiceEndCallbackWithData:(NSData *)wavData;
+- (void)voiceDidContinueWithPCMFloatData:(NSData *)pcmFloatData;
 
 @end
 
@@ -25,13 +26,21 @@ void voiceEndCallbackBridge(void* context, const uint8_t* wavData, size_t wavSiz
     }
 }
 
+void voiceDidContinueCallbackBridge(void* context, const uint8_t* pcmFloatData, size_t dataSize) {
+    VADWrapper *wrapper = (__bridge VADWrapper *)context;
+    if (wrapper != nil) {
+        NSData *data = [NSData dataWithBytes:pcmFloatData length:dataSize];
+        [wrapper voiceDidContinueWithPCMFloatData:data];
+    }
+}
+
 @implementation VADWrapper
 
 - (instancetype)init {
     self = [super init];
     if (self) {
         _vadInstance = create_vad_instance();
-        set_vad_callback(_vadInstance, (__bridge void *)(self), &voiceStartCallbackBridge, &voiceEndCallbackBridge);
+        set_vad_callback(_vadInstance, (__bridge void *)(self), &voiceStartCallbackBridge, &voiceEndCallbackBridge, &voiceDidContinueCallbackBridge);
     }
     return self;
 }
@@ -91,6 +100,12 @@ void voiceEndCallbackBridge(void* context, const uint8_t* wavData, size_t wavSiz
 - (void)voiceEndCallbackWithData:(NSData *)wavData {
     if ([self.delegate respondsToSelector:@selector(voiceEndedWithWavData:)]) {
         [self.delegate voiceEndedWithWavData:wavData];
+    }
+}
+
+- (void)voiceDidContinueWithPCMFloatData:(NSData *)pcmFloatData {
+    if ([self.delegate respondsToSelector:@selector(voiceDidContinueWithPCMFloatData:)]) {
+        [self.delegate voiceDidContinueWithPCMFloatData:pcmFloatData];
     }
 }
 

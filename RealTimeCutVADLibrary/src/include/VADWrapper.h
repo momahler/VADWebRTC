@@ -37,6 +37,11 @@ typedef NS_ENUM(NSInteger, SMVER) {
 // Internal sample rate conversion is performed automatically.
 - (void)voiceEndedWithWavData:(NSData *)wavData;
 
+// Called continuously during voice activity with the current chunk of denoised PCM float data.
+// The data is 32-bit floating point (IEEE 754), mono, and at a sample rate of 16 kHz.
+// This allows real-time processing or streaming of voice segments while recording is still in progress.
+- (void)voiceDidContinueWithPCMFloatData:(NSData *)pcmFloatData;
+
 @end
 
 // VADWrapper Interface

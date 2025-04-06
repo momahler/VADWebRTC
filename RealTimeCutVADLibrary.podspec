@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RealTimeCutVADLibrary'
-  s.version          = '1.0.8'
+  s.version          = '1.0.9'
   s.summary          = 'A real-time VAD library for iOS'
   s.homepage         = 'https://github.com/helloooideeeeea/RealTimeCutVADLibrary'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.resources = ['RealTimeCutVADLibrary/src/Resources/**/*']
   
   s.prepare_command = <<-CMD
-  curl -LO https://github.com/helloooideeeeea/RealTimeCutVADCXXLibrary/releases/download/v1.0.2/RealTimeCutVADCXXLibrary.xcframework.zip
+  curl -LO https://github.com/helloooideeeeea/RealTimeCutVADLibraryForXCFramework/releases/download/v1.0.3/RealTimeCutVADCXXLibrary.xcframework.zip
   unzip -o RealTimeCutVADCXXLibrary.xcframework.zip -d RealTimeCutVADLibrary/Frameworks
 
   curl -LO https://github.com/helloooideeeeea/RealTimeCutVADLibraryForXCFramework/releases/download/v1.0.2/onnxruntime.xcframework.zip

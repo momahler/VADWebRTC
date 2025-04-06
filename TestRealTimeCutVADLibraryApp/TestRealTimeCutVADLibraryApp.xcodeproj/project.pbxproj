@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8DE7BC03AEFDE5F59D7A2EED /* Pods_TestRealTimeCutVADLibraryApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6625D37C743062A742553BDF /* Pods_TestRealTimeCutVADLibraryApp.framework */; };
+		801FBC7D2DA262E700F88908 /* RealTimeCutVADLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 801FBC7C2DA262E700F88908 /* RealTimeCutVADLibrary */; };
+		80A4426F2D97922200D6E183 /* RealTimeCutVADLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 80A4426E2D97922200D6E183 /* RealTimeCutVADLibrary */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,9 +25,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		23A74B01E0C5F32F4FCDFBCA /* Pods-TestRealTimeCutVADLibraryApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRealTimeCutVADLibraryApp.debug.xcconfig"; path = "Target Support Files/Pods-TestRealTimeCutVADLibraryApp/Pods-TestRealTimeCutVADLibraryApp.debug.xcconfig"; sourceTree = "<group>"; };
-		310B410F6B603FE32982A44D /* Pods-TestRealTimeCutVADLibraryApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestRealTimeCutVADLibraryApp.release.xcconfig"; path = "Target Support Files/Pods-TestRealTimeCutVADLibraryApp/Pods-TestRealTimeCutVADLibraryApp.release.xcconfig"; sourceTree = "<group>"; };
-		6625D37C743062A742553BDF /* Pods_TestRealTimeCutVADLibraryApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestRealTimeCutVADLibraryApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		807D20CB2D523E5A004AB1AD /* TestRealTimeCutVADLibraryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestRealTimeCutVADLibraryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,28 +54,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DE7BC03AEFDE5F59D7A2EED /* Pods_TestRealTimeCutVADLibraryApp.framework in Frameworks */,
+				801FBC7D2DA262E700F88908 /* RealTimeCutVADLibrary in Frameworks */,
+				80A4426F2D97922200D6E183 /* RealTimeCutVADLibrary in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2BDEEB1F9AE20CF570CC2A8C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6625D37C743062A742553BDF /* Pods_TestRealTimeCutVADLibraryApp.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		807D20C22D523E5A004AB1AD = {
 			isa = PBXGroup;
 			children = (
 				807D20CD2D523E5A004AB1AD /* TestRealTimeCutVADLibraryApp */,
 				807D20CC2D523E5A004AB1AD /* Products */,
 				CAF103BF6900B569DB7F9596 /* Pods */,
-				2BDEEB1F9AE20CF570CC2A8C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,8 +82,6 @@
 		CAF103BF6900B569DB7F9596 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				23A74B01E0C5F32F4FCDFBCA /* Pods-TestRealTimeCutVADLibraryApp.debug.xcconfig */,
-				310B410F6B603FE32982A44D /* Pods-TestRealTimeCutVADLibraryApp.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -105,12 +93,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 807D20DE2D523E5B004AB1AD /* Build configuration list for PBXNativeTarget "TestRealTimeCutVADLibraryApp" */;
 			buildPhases = (
-				0A042671849FFF65A55A5CCB /* [CP] Check Pods Manifest.lock */,
 				807D20C72D523E5A004AB1AD /* Sources */,
 				807D20C82D523E5A004AB1AD /* Frameworks */,
 				807D20C92D523E5A004AB1AD /* Resources */,
 				807D218E2D5248E5004AB1AD /* Embed Frameworks */,
-				A5DF8DAB80875FD613663ABD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,6 +134,9 @@
 			);
 			mainGroup = 807D20C22D523E5A004AB1AD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				801FBC7B2DA262E700F88908 /* XCLocalSwiftPackageReference "RealTimeCutVADLibrary" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 807D20CC2D523E5A004AB1AD /* Products */;
 			projectDirPath = "";
@@ -168,48 +157,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		0A042671849FFF65A55A5CCB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TestRealTimeCutVADLibraryApp-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A5DF8DAB80875FD613663ABD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TestRealTimeCutVADLibraryApp/Pods-TestRealTimeCutVADLibraryApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-TestRealTimeCutVADLibraryApp/Pods-TestRealTimeCutVADLibraryApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestRealTimeCutVADLibraryApp/Pods-TestRealTimeCutVADLibraryApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		807D20C72D523E5A004AB1AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -223,7 +170,6 @@
 /* Begin XCBuildConfiguration section */
 		807D20DF2D523E5B004AB1AD /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 23A74B01E0C5F32F4FCDFBCA /* Pods-TestRealTimeCutVADLibraryApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -253,7 +199,6 @@
 		};
 		807D20E02D523E5B004AB1AD /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 310B410F6B603FE32982A44D /* Pods-TestRealTimeCutVADLibraryApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -422,6 +367,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		801FBC7B2DA262E700F88908 /* XCLocalSwiftPackageReference "RealTimeCutVADLibrary" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../RealTimeCutVADLibrary;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		80A4426D2D97922200D6E183 /* XCRemoteSwiftPackageReference "RealTimeCutVADLibrary" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/helloooideeeeea/RealTimeCutVADLibrary";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		801FBC7C2DA262E700F88908 /* RealTimeCutVADLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealTimeCutVADLibrary;
+		};
+		80A4426E2D97922200D6E183 /* RealTimeCutVADLibrary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 80A4426D2D97922200D6E183 /* XCRemoteSwiftPackageReference "RealTimeCutVADLibrary" */;
+			productName = RealTimeCutVADLibrary;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 807D20C32D523E5A004AB1AD /* Project object */;
 }

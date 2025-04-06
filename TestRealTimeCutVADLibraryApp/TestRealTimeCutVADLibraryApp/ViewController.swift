@@ -27,6 +27,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var micImg: UIImageView!
     @IBOutlet weak var btns: UIStackView!
     
+    private var collectedPCMData = Data()
+    private let pcmDataQueue = DispatchQueue(label: "com.example.pcmDataQueue")
+    
     private var speechVoiceAudio: Data? = nil {
         didSet {
             if speechVoiceAudio != nil {
@@ -76,15 +79,31 @@ class ViewController: UIViewController {
 
 
 extension ViewController: VADDelegate {
+    
     func voiceStarted() {
         print("voiceStarted")
         recordingStatus = .TALKING
+        
+        // Initialize (clear) previously collected PCM data
+        self.collectedPCMData = Data()
     }
     
     func voiceEnded(withWavData wavData: Data!) {
         print("voiceEnded")
         recordingStatus = .RUNNING
         speechVoiceAudio = wavData
+    }
+    
+    func voiceDidContinue(withPCMFloat pcmFloatData: Data!) {
+        print("voiceDidContinue")
+        
+        // ⚠️ Process RealTimeCut VAD on a separate thread to avoid blocking the main thread.
+        pcmDataQueue.async { [weak self] in
+            guard let self = self, let data = pcmFloatData else { return }
+
+            // Append (concatenate) the new PCM data to the private variable.
+            self.collectedPCMData.append(data)
+        }
     }
 }
 
@@ -201,11 +220,13 @@ extension ViewController {
         let timestamp = dateFormatter.string(from: Date())
         
         let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent("\(timestamp).wav")
+        let tempPCMDataURL = FileManager.default.temporaryDirectory.appendingPathComponent("VoiceDidContinueAppend_16khz_32bit_\(timestamp).pcm")
             
         do {
             try data.write(to: tempURL)
+            try collectedPCMData.write(to: tempPCMDataURL)
             
-            let activityVC = UIActivityViewController(activityItems: [tempURL], applicationActivities: nil)
+            let activityVC = UIActivityViewController(activityItems: [tempURL, tempPCMDataURL], applicationActivities: nil)
             if let popoverController = activityVC.popoverPresentationController {
                 popoverController.sourceView = self.view
                 popoverController.sourceRect = CGRect(x: self.view.bounds.midX,

@@ -12,6 +12,7 @@ A real-time Voice Activity Detection (VAD) library for iOS and macOS using Siler
 - **Outputs WAV data with automatic sample rate conversion to 16 kHz**
 - **iOS and macOS support**
 - **Supports CocoaPods and Swift Package Manager (SPM)**
+- **🆕 Real-time PCM stream callback (`voiceDidContinueWithPCMFloatData`)**
 
 ---
 
@@ -30,7 +31,7 @@ Check out the sample iOS app demonstrating real-time VAD:
 Add the following to your `Podfile` to integrate the library:
 
 ```ruby
-pod 'RealTimeCutVADLibrary', '~> 1.0.8'
+pod 'RealTimeCutVADLibrary', '~> 1.0.9'
 ```
 
 Then, run:
@@ -45,7 +46,7 @@ You can also integrate the library using Swift Package Manager. Add the followin
 
 ```swift
 .dependencies: [
-    .package(url: "https://github.com/helloooideeeeea/RealTimeCutVADLibrary.git", from: "1.0.8")
+    .package(url: "https://github.com/helloooideeeeea/RealTimeCutVADLibrary.git", from: "1.0.9")
 ]
 ```
 
@@ -114,6 +115,20 @@ extension ViewController: VADDelegate {
     // The Data object includes the WAV file header metadata, making it ready for playback or saving directly.
     func voiceEnded(withWavData wavData: Data!) {
         print("Voice ended. WAV data length: \(wavData.count) bytes")
+    }
+
+    // 🆕 Called in real-time with each chunk of PCM float audio data during voice activity
+    // This data is 32-bit float, mono, 16 kHz, and can be concatenated for file output or streamed live.
+    // ⚠️ Make sure to handle this on a background thread, as processing in real-time on the main thread may lead to dropped audio or UI freeze.
+    // For testing, save the concatenated PCM data and convert to WAV using sox:
+    // $ sox -t raw -r 16000 -c 1 -e float -b 32 test_16khz_32bit.pcm test_16khz_32bit.wav
+    func voiceDidContinue(withPCMFloat pcmFloatData: Data!) {
+        print("voiceDidContinue")
+        // ex. private let pcmDataQueue = DispatchQueue(label: "com.example.pcmDataQueue")
+        pcmDataQueue.async { [weak self] in
+            guard let self = self, let data = pcmFloatData else { return }
+            self.collectedPCMData.append(data)
+        }
     }
 }
 ```

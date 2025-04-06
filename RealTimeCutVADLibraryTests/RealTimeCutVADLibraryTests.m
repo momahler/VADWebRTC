@@ -4,6 +4,7 @@
 @interface MockVADDelegate : NSObject <VADDelegate>
 @property (nonatomic, assign) BOOL voiceStartedCalled;
 @property (nonatomic, strong) NSData *receivedWavData;
+@property (nonatomic, strong) NSData *receivedPCMFloatData;
 @end
 
 @implementation MockVADDelegate
@@ -15,6 +16,11 @@
 - (void)voiceEndedWithWavData:(NSData *)wavData {
     self.receivedWavData = wavData;
 }
+
+- (void)voiceDidContinueWithPCMFloatData:(NSData *)pcmFloatData { 
+    self.receivedPCMFloatData = pcmFloatData;
+}
+
 
 @end
 
@@ -91,6 +97,7 @@
     // 6. デリゲートのコールバックが正常に呼ばれたか確認
     XCTAssertTrue(self.mockDelegate.voiceStartedCalled, @"voiceStarted should be called on delegate");
     XCTAssertNotNil(self.mockDelegate.receivedWavData, @"voiceEndedWithWavData should be called with valid data");
+    XCTAssertNotNil(self.mockDelegate.receivedPCMFloatData, @"voiceDidContinueWithPCMFloatData should be called with valid data");
 }
 
 
